@@ -14,9 +14,6 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 
-
-
-os.environ["OPENAI_API_KEY"] = "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"
 urls = [
     # "http://laravel.com/",
     # "http://laravel.com/docs/10.x/releases",
@@ -197,3 +194,24 @@ class AskAI(APIView):
 
             answer = chain.invoke(question)
             return Response({ "message": answer })
+    
+
+
+
+    # node            - 300
+    # laravel         - 300
+    # asp net         - 300 
+    # python/django   - 300
+    # nextjs          - 300
+    # rubyonralis     - 200
+    # problem-solving - 2000
+    # system-design   - 100
+
+
+    # How much time do you want to spend per day
+    # Daily - monthly basis - packacge (15 days )
+
+    # quiz - queston, 4 - option, correct answer (1/multiple)
+    # problem solving - title, description, sample input, sample output, example code, boilerplate code
+    # system design - problem description, answer
+    # technical questions - problem description, boilerplate code
