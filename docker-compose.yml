@@ -1,0 +1,30 @@
+version: '3.1'
+services:
+  # Django web application
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"  # Map Django app port to host machine
+    volumes:
+      - .:/app  # Mount local directory to /app in the container
+    depends_on:
+      - db
+
+  # MySQL database
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: 'mydatabase'  # Replace with your database name
+      MYSQL_USER: 'myuser'          # Replace with your database username
+      MYSQL_PASSWORD: 'mypassword'  # Replace with your database password
+      MYSQL_ROOT_PASSWORD: 'rootpassword'  # Replace with MySQL root password
+    ports:
+      - "3306:3306"  # Map MySQL port to host machine
+    volumes:
+      - mysql_data:/var/lib/mysql  # Mount a volume for persistent MySQL data storage
+
+
+volumes:
+  mysql_data:
