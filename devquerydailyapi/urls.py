@@ -17,14 +17,17 @@ from django.contrib import admin
 from django.urls import path,include
 from rest_framework.routers import DefaultRouter
 from .viewsets.task import TaskViewSet
-from .viewsets.urlloader import UrlLoaderApi, AskAI
+from .viewsets.train import LoadUrlsAPI, AskAI, LoadTrainData, SuggestCodingProblem, LoadTrainDataWithAstraDB
 
 router = DefaultRouter()
 router.register(r'tasks', TaskViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('load-url/', UrlLoaderApi.as_view(), name='url-loader'),
+    path('load-url/', LoadUrlsAPI.as_view(), name='url-loader'),
     path('ask-ai/', AskAI.as_view(), name='ask-ai'),
+    path('load-train-data/', LoadTrainData.as_view(), name='load-train-data'),
+    path('load-train-data-astra/',LoadTrainDataWithAstraDB.as_view(), name='load-train-data'),
+    path('coding-problem/', SuggestCodingProblem.as_view(), name='suggest-coding-problem'),
     path('', include(router.urls))
 ]
